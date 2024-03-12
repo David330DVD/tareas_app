@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tareas_app/Main/home_controller.dart';
@@ -159,7 +160,9 @@ class MyHomePage extends StatelessWidget {
       selectedDate = DateTime(
           fecha!.year, fecha!.month, fecha!.day, hora!.hour, hora!.minute);
     }
-    print(selectedDate);
+    if (kDebugMode) {
+      print(selectedDate);
+    }
     return selectedDate;
   }
 }
