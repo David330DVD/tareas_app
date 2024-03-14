@@ -1,17 +1,27 @@
 import 'package:get/get.dart';
 import 'package:tareas_app/tarea.dart';
+import 'package:tareas_app/TaskService.dart';
 
 class HomeController extends GetxController {
   List<Tarea> tasks = [];
   List<Tarea> completedTasks = [];
 
+  @override
+  void onInit() {
+    super.onInit();
+    TaskService().obtenerTareas().then((value) {
+      tasks = value;
+      update();
+    });
+  }
+
   void addTask(String taskName, DateTime dueDate) {
-    final newTask = Tarea(
-      id: tasks.length + 1,
-      nombre: taskName,
-      fechaPrevista: dueDate,
-    );
-    tasks.add(newTask);
+    TaskService().crearTarea(taskName, dueDate);
+
+    TaskService().obtenerTareas().then((value) {
+      tasks.add(value.last);
+      update();
+    });
     update();
   }
 

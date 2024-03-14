@@ -12,6 +12,7 @@ dependencies:
   flutter_datetime_picker: ^1.5.1
   get: ^4.6.6
   get_storage:
+  http: ^1.2.1
   intl: ^0.19.0
 
 
